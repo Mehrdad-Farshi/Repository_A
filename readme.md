@@ -398,3 +398,25 @@ Switched to branch 'development'
 Your branch is behind 'origin/development' by 1 commit, and can be fast-forwarded.
   (use "git pull" to update your local branch)
 ```
+
+
+
+
+
+--- 
+
+### senario 1
+
+- add repository S as a submodule to repository A and push last changes to Repository A 
+
+### senario 2
+
+- try to pull a  project with submodule for the first time
+
+### senario 3
+
+- Make some changes in Repository S from its origin project and try to pull last changes to Repository A 
+
+### senario 4 
+
+- Try to make some changes inside a submodule directory of a superProject and push it to the origin
