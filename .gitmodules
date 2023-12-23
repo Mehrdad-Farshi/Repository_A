@@ -1,0 +1,3 @@
+[submodule "Repository_B"]
+	path = Repository_B
+	url = git@github.com:Mehrdad-Farshi/Repository_B.git
