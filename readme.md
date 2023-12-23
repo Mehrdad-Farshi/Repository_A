@@ -2,8 +2,9 @@
 
 ## Add a new submodule
 
+`git submodule add git@github.com:Mehrdad-Farshi/Repository_S.git`
+
 ```bash
-➜  Repository_B git:(master) git submodule add git@github.com:Mehrdad-Farshi/Repository_S.git
 Cloning into '/home/mehrdad/projects/submodule/Repository_B/Repository_S'...
 remote: Enumerating objects: 23, done.
 remote: Counting objects: 100% (23/23), done.
@@ -13,9 +14,11 @@ Receiving objects: 100% (23/23), done.
 Resolving deltas: 100% (5/5), done.
 ```
 
-#### `ls` in Super Project Directory 
+#### `ls` in Super Project Directory
+
+`ll`
+
 ```bash
-➜  Repository_B git:(master) ✗ ll
 total 0
 drwxrwxr-x 1 mehrdad mehrdad  4 Dec 14 20:26 DirB3
 drwxrwxr-x 1 mehrdad mehrdad  4 Dec 14 20:26 DirB2
@@ -25,8 +28,9 @@ drwxrwxr-x 1 mehrdad mehrdad 22 Dec 17 16:39 Repository_S
 
 #### `git status` in the Super Project Directory
 
-```bash 
-➜  Repository_B git:(master) ✗ git status 
+`git status`
+
+```bash
 On branch master
 Your branch is up to date with 'origin/master'.
 
@@ -37,10 +41,11 @@ Changes to be committed:
 
 ```
 
-#### `cat .gitmodules `
+#### `cat .gitmodules`
+
+`cat .gitmodules`
 
 ```bash
-➜  Repository_B git:(master) ✗ cat .gitmodules 
 [submodule "Repository_S"]
         path = Repository_S
         url = git@github.com:Mehrdad-Farshi/Repository_S.git
@@ -52,7 +57,6 @@ this file is version-controlled with your other files, like your .gitignore file
 with the rest of your project. This is how other people who clone this project know where to get the
 submodule projects from
 
-
 #### on super project we can see whats happening in submodules
 
 > `git diff --cached`
@@ -61,8 +65,9 @@ submodule projects from
 
     Without --cached (or alternatively, using git diff without any additional options), Git would show the differences between the working directory and the staging area, highlighting changes that haven't been staged yet.
 
+#### in super project
 
-#### `git diff --cached --submodule` in super project 
+`git diff --cached --submodule`
 
 ```bash
 diff --git a/.gitmodules b/.gitmodules
@@ -76,32 +81,36 @@ index 0000000..abccf9f
 +       url = git@github.com:Mehrdad-Farshi/Repository_S.git
 Submodule Repository_S 0000000...4cca342 (new submodule)
 ```
+
 **Tip** : for not every time mention **--submodule**
 
 `git config --global diff.submodule log`
 
+#### In Repository_B git:(master) ✗
 
-#### Repository_B git:(master) ✗ git commit -am 'add repository Repository_S as submodule'
+`git commit -am 'add repository Repository_S as submodule'`
 
-```bash 
+```bash
+
 [master e9c9dd0] add repository Repository_S as submodule
  2 files changed, 4 insertions(+)
  create mode 100644 .gitmodules
  create mode 160000 Repository_S
  ```
 
- #### push to origin the super project
+#### push to origin the super project
 
  `➜  Repository_B git:(master) ggpush`
- ```bash
-Enumerating objects: 4, done.
-Counting objects: 100% (4/4), done.
-Delta compression using up to 4 threads
-Compressing objects: 100% (3/3), done.
-Writing objects: 100% (3/3), 469 bytes | 469.00 KiB/s, done.
-Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
-To github.com:Mehrdad-Farshi/Repository_B.git
-   7cba25a..e9c9dd0  master -> master
+
+```bash
+  Enumerating objects: 4, done.
+  Counting objects: 100% (4/4), done.
+  Delta compression using up to 4 threads
+  Compressing objects: 100% (3/3), done.
+  Writing objects: 100% (3/3), 469 bytes | 469.00 KiB/s, done.
+  Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+  To github.com:Mehrdad-Farshi/Repository_B.git
+    7cba25a..e9c9dd0  master -> master
 ```
 
 ## Cloning a Project with Submodules
@@ -210,16 +219,19 @@ this to something different if you want. For example, if you want to have the `R
 submodule track that repository’s `“development”` branch, you can set it in either your `.gitmodules` file (so
 everyone else also tracks it), or just in your local `.git/config` file. Let’s set it in the `.gitmodules` file:
 
+#### ➜  Repository_B git:(master) ✗
+
 ```bash
-➜  Repository_B git:(master) ✗ git config -f .gitmodules submodule.Repository_S.branch development
+git config -f .gitmodules submodule.Repository_S.branch development
 ```
 
-`➜  Repository_B git:(master) ✗ git submodule update --remote`
+`git submodule update --remote`
 
 ```bash
 Submodule path 'Repository_S': checked out '38b2795cf1dcec82a1cd916c4da64d9056b9d24e'
 ```
-`➜  Repository_B git:(master) ✗ git status `
+
+`git status`
 
 ```bash
 On branch master
@@ -243,7 +255,9 @@ of changes to your submodules:
 git config status.submodulesummary 1
 ```
 
-`➜  Repository_B git:(master) ✗ gst`
+#### ➜ Repository_B git:(master) ✗
+
+`gst`
 
 ```bash
 On branch master
@@ -287,7 +301,7 @@ Submodule Repository_S 4cca342..38b2795:
 
 ```
 
-### nokte mohem 
+### nokte mohem !
 
 Git will by default try to update all of your submodules when you run `git submodule update --remote`. If you have a lot of them, you may want to pass the name of just the submodule you want
 to try to update.
@@ -347,6 +361,7 @@ Your branch is up to date with 'origin/master'.
 nothing to commit, working tree clean
 
 ```
+
 Note that to be on the safe side, you should run `git submodule update` with the `--init` flag in case the MainProject commits you just pulled added new submodules, and with the `--recursive` flag if any submodules have nested submodules.
 
 ## Working on a Submodule
@@ -364,6 +379,7 @@ In order to set up your submodule to be easier to go in and hack on, you need to
 need to go into each submodule and check out a branch to work on.
 
 `➜  Repository_B git:(master) ll`
+
 ```bash
 total 0
 drwxrwxr-x 1 mehrdad mehrdad  4 Dec 17 17:48 DirB3
@@ -371,9 +387,10 @@ drwxrwxr-x 1 mehrdad mehrdad  4 Dec 17 17:48 DirB2
 drwxrwxr-x 1 mehrdad mehrdad  4 Dec 17 17:48 DirB1
 drwxrwxr-x 1 mehrdad mehrdad 60 Dec 17 19:54 Repository_S
 ```
-`➜  Repository_B git:(master) cd Repository_S `
 
-`➜  Repository_S git:(9d1c9b5) gco development `
+➜  Repository_B git:(master) `cd Repository_S`
+
+➜  Repository_S git:(9d1c9b5) `gco development`
 
 ```bash
 Previous HEAD position was 9d1c9b5 ashe added
@@ -381,5 +398,3 @@ Switched to branch 'development'
 Your branch is behind 'origin/development' by 1 commit, and can be fast-forwarded.
   (use "git pull" to update your local branch)
 ```
-
-
